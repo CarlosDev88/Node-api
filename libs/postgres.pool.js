@@ -13,9 +13,14 @@ const { Pool } = require('pg');
 //   database: 'my_store',
 // });
 
-const USER = encodeURIComponent('carlos');
+//esto es para postgress
+// const USER = encodeURIComponent('carlos');
+// const PASSWORD = encodeURIComponent('admin123');
+// const URI = `postgres://${USER}:${PASSWORD}@localhost:5432/my_store`;
+
+const USER = encodeURIComponent('root');
 const PASSWORD = encodeURIComponent('admin123');
-const URI = `postgres://${USER}:${PASSWORD}@localhost:5432/my_store`;
+const URI = `mysql://${USER}:${PASSWORD}@localhost:3309/my_store`;
 
 const pool = new Pool({
   connectionString: URI,
