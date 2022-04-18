@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const setupModels = require('../db/models');
+const { config } = require('../config/config');
 
 //cadena de conexion para posgres
 // const USER = encodeURIComponent('carlos');
@@ -11,9 +12,9 @@ const setupModels = require('../db/models');
 //   logging: true,
 // });
 
-const USER = encodeURIComponent('root');
-const PASSWORD = encodeURIComponent('admin123');
-const URI = `mysql://${USER}:${PASSWORD}@localhost:3309/my_store`;
+const USER = encodeURIComponent(config.dbUser);
+const PASSWORD = encodeURIComponent(config.dbPassword);
+const URI = `mysql://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
 
 const sequelize = new Sequelize(URI, {
   dialect: 'mysql',
