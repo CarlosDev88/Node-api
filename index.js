@@ -10,13 +10,14 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(express.json());
-const whitelist = ['http://localhost:8080'];
+
+const whitelist = ['http://localhost:8080', 'https://myapp.co'];
 const options = {
-  origin: (origin, cb) => {
-    if (whitelist.includes(origin)) {
-      cb(null, true);
+  origin: (origin, callback) => {
+    if (whitelist.includes(origin) || !origin) {
+      callback(null, true);
     } else {
-      cb(new Error('No permitido'));
+      callback(new Error('no permitido'));
     }
   },
 };
