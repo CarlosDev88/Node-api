@@ -7,17 +7,17 @@ const { config } = require('../config/config');
 // const PASSWORD = encodeURIComponent('admin123');
 // const URI = `postgres://${USER}:${PASSWORD}@localhost:5432/my_store`;
 
+const USER = encodeURIComponent(config.dbUser);
+const PASSWORD = encodeURIComponent(config.dbPassword);
+const URI = `postgres://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
+
 // const sequelize = new Sequelize(URI, {
-//   dialect: 'postgres',
+//   dialect: 'mysql',
 //   logging: true,
 // });
 
-const USER = encodeURIComponent(config.dbUser);
-const PASSWORD = encodeURIComponent(config.dbPassword);
-const URI = `mysql://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
-
 const sequelize = new Sequelize(URI, {
-  dialect: 'mysql',
+  dialect: 'postgres',
   logging: true,
 });
 
